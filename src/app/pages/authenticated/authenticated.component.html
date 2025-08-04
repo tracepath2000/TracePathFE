@@ -1,0 +1,45 @@
+<div class="h-100 w-100 d-flex">
+  <div class="w-5">
+    <div class="h-100 side-nav-inner-container">
+      <div
+        class="w-100 d-flex flex-column align-items-center side-nav-item-container"
+      >
+        <div *ngFor="let item of items" class="side-nav-options">
+          <div
+            class="w-100 h-100 d-flex justify-content-center align-items-center"
+            (click)="handleItemClick(item)"
+            [ngClass]="{
+              'side-nav-options-selected': selectedItem.icon == item.icon
+            }"
+            [matTooltip]="item.tooltip"
+            matTooltipPosition="right"
+          >
+            <mat-icon>{{ item.icon }}</mat-icon>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div matTooltip="Settings"
+            matTooltipPosition="right"
+          (click)="handleItemClick({
+      icon: 'settings',
+      iconPath: '/a/settings',
+    })"
+          [ngClass]="{
+            'side-nav-options-selected': selectedItem.icon == 'settings'
+          }"
+          class="side-nav-options"
+        >
+          <div
+            class="w-100 h-100 d-flex justify-content-center align-items-center"
+          >
+            <mat-icon>settings</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-90">
+    <router-outlet></router-outlet>
+  </div>
+</div>
